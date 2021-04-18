@@ -130,4 +130,3 @@ def logentry(file, error_code, i):
     i = i + 1
     return i
 
-ex2(inp_dir, out_dir, logfile)
