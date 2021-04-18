@@ -28,8 +28,7 @@ def ex2(inp_dir, out_dir, logfile):
     i = 0
     # define list for hash values of the images
     hash_list = []
-    # define name of logfile
-    log_txt = "logfile.txt"
+
     # Get list of all files in input directory
     image_files = sorted(glob.glob(os.path.join(os.path.abspath(inp_dir), '**'),
                                    recursive=True))
@@ -65,7 +64,7 @@ def ex2(inp_dir, out_dir, logfile):
                             # check if already copied
                             # calculate hash value of current file first
                             hashing_function = hashlib.sha256()
-                            hashing_function.update(image.tostring())
+                            hashing_function.update(image.tobytes())
                             image_hash = hashing_function.digest()
                             # check if hash value of current file is same as hash value of one of the copied files
                             for current_element in hash_list:
@@ -112,10 +111,12 @@ def ex2(inp_dir, out_dir, logfile):
         else:
             error_code = 1
             i = logentry(image_files, error_code, i)
-
+    print("Done.")
     return correct_img
 
 def logentry(file, error_code, i):
+    # defining name of logfile
+    log_txt = "logfile.txt"
     log_path = logfile + os.sep + log_txt
     # makes folder if not yet existing
     try:
