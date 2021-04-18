@@ -116,7 +116,7 @@ def ex2(inp_dir, out_dir, logfile):
 
 def logentry(file, error_code, i):
     # defining name of logfile
-    log_txt = "logfile.txt"
+    log_txt = "logfile.log"
     log_path = logfile + os.sep + log_txt
     # makes folder if not yet existing
     try:
