@@ -21,7 +21,7 @@ def ex2(inp_dir, out_dir, logfile):
     hash_list = []
 
     # Get list of all files in input directory
-    image_files = sorted(glob.glob(os.path.join(os.path.abspath(inp_dir), '**'),
+    image_files = sorted(glob.glob(os.path.join(os.path.abspath(inp_dir), '**', '*'),
                                    recursive=True))
 
     # Make output directory, pass if already exists
@@ -61,6 +61,7 @@ def ex2(inp_dir, out_dir, logfile):
                             for current_element in hash_list:
                                 if image_hash == current_element:
                                     yet_copied = True
+                                    break
                                 else:
                                     yet_copied = False
                             # final step: renaming and copying the file
@@ -122,6 +123,3 @@ def ex2(inp_dir, out_dir, logfile):
             i = i + 1
     print("Done.")
     return correct_img
-
-
-
