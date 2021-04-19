@@ -12,15 +12,6 @@ import numpy as np
 import hashlib
 import shutil
 
-# enter input direction
-inp_dir = r"C:\Users\Julius\Desktop\Phyton II\Unit04\04_supplements\04_supplements\04_dataset_preview\dataset_preview"
-
-# enter output direction
-out_dir = inp_dir + "_out"
-
-# enter logfile direction
-logfile = inp_dir + r"_log"
-
 def ex2(inp_dir, out_dir, logfile):
     # initialize variables
     correct_img = 0
@@ -89,44 +80,48 @@ def ex2(inp_dir, out_dir, logfile):
 
                             # logfile entry: file yet copied
                             else:
-                                error_code = 6
-                                i = logentry(image_files, error_code, i)
+                                # prints the error code and the filename in the logfile
+                                with open(logfile, 'a') as log:
+                                    print(f'{os.path.basename(image_files[i])}; 6', file=log)
+                                # counts to next element in while loop
+                                i = i + 1
                         # logfile entry: error with variance
                         else:
-                            error_code = 5
-                            i = logentry(image_files, error_code, i)
+                            # prints the error code and the filename in the logfile
+                            with open(logfile, 'a') as log:
+                                print(f'{os.path.basename(image_files[i])}; 5', file=log)
+                            # counts to next element in while loop
+                            i = i + 1
                     # logfile entry: error with color or dimension
                     else:
-                        error_code = 4
-                        i = logentry(image_files, error_code, i)
+                        # prints the error code and the filename in the logfile
+                        with open(logfile, 'a') as log:
+                            print(f'{os.path.basename(image_files[i])}; 4', file=log)
+                        # counts to next element in while loop
+                        i = i + 1
                 # logfile entry: error with readability
                 else:
-                    error_code = 3
-                    i = logentry(image_files, error_code, i)
+                    # prints the error code and the filename in the logfile
+                    with open(logfile, 'a') as log:
+                        print(f'{os.path.basename(image_files[i])}; 3', file=log)
+                    # counts to next element in while loop
+                    i = i + 1
             # logfile entry: error with size
             else:
-                error_code = 2
-                i = logentry(image_files, error_code, i)
+                # prints the error code and the filename in the logfile
+                with open(logfile, 'a') as log:
+                    print(f'{os.path.basename(image_files[i])}; 2', file=log)
+                # counts to next element in while loop
+                i = i + 1
         # logfile entry: error with suffix
         else:
-            error_code = 1
-            i = logentry(image_files, error_code, i)
+            # prints the error code and the filename in the logfile
+            with open(logfile, 'a') as log:
+                print(f'{os.path.basename(image_files[i])}; 1', file=log)
+            # counts to next element in while loop
+            i = i + 1
     print("Done.")
     return correct_img
 
-def logentry(file, error_code, i):
-    # defining name of logfile
-    log_txt = "logfile.log"
-    log_path = logfile + os.sep + log_txt
-    # makes folder if not yet existing
-    try:
-        os.mkdir(logfile)
-    except OSError:
-        pass
-    # prints the error code and the filename in the logfile
-    with open(log_path, 'a') as log:
-        print(f'{file[i]}; {error_code}', file=log)
-    # counts to next element in while loop
-    i = i + 1
-    return i
+
 
