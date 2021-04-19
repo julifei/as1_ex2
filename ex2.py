@@ -83,42 +83,42 @@ def ex2(inp_dir, out_dir, logfile):
                             else:
                                 # prints the error code and the filename in the logfile
                                 with open(logfile, 'a') as log:
-                                    print(f'{os.path.basename(image_files[i])};6', file=log)
+                                    print(f'{os.path.relpath(image_files[i], start=inp_dir)};6', file=log)
                                 # counts to next element in while loop
                                 i = i + 1
                         # logfile entry: error with variance
                         else:
                             # prints the error code and the filename in the logfile
                             with open(logfile, 'a') as log:
-                                print(f'{os.path.basename(image_files[i])};5', file=log)
+                                print(f'{os.path.relpath(image_files[i], start=inp_dir)};5', file=log)
                             # counts to next element in while loop
                             i = i + 1
                     # logfile entry: error with color or dimension
                     else:
                         # prints the error code and the filename in the logfile
                         with open(logfile, 'a') as log:
-                            print(f'{os.path.basename(image_files[i])};4', file=log)
+                            print(f'{os.path.relpath(image_files[i], start=inp_dir)};4', file=log)
                         # counts to next element in while loop
                         i = i + 1
                 # logfile entry: error with readability
                 else:
                     # prints the error code and the filename in the logfile
                     with open(logfile, 'a') as log:
-                        print(f'{os.path.basename(image_files[i])};3', file=log)
+                        print(f'{os.path.relpath(image_files[i], start=inp_dir)};3', file=log)
                     # counts to next element in while loop
                     i = i + 1
             # logfile entry: error with size
             else:
                 # prints the error code and the filename in the logfile
                 with open(logfile, 'a') as log:
-                    print(f'{os.path.basename(image_files[i])};2', file=log)
+                    print(f'{os.path.relpath(image_files[i], start=inp_dir)};2', file=log)
                 # counts to next element in while loop
                 i = i + 1
         # logfile entry: error with suffix
         else:
             # prints the error code and the filename in the logfile
             with open(logfile, 'a') as log:
-                print(f'{os.path.basename(image_files[i])};1', file=log)
+                print(f'{os.path.relpath(image_files[i], start=inp_dir)};1', file=log)
             # counts to next element in while loop
             i = i + 1
     print("Done.")
